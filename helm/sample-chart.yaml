@@ -1,0 +1,11 @@
+apiVersion: v2 # v2 -> HELM 3!!!!!!!!!!!
+name: chart-demo
+description: A sample chart file
+keywords:
+  - demo
+type: application
+appVersion: 1.16.0 # version of the application
+version: 0.1.0 # version of the chart
+dependencies:
+  - a
+  - b

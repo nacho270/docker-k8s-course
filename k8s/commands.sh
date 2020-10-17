@@ -24,7 +24,7 @@ kubectl get pvc
 kubectl get secrets
 
 kubectl describe pod client-pod
-
+kubectl describe pod -l app=frontend
 
 kubectl delete -f client-pod.yaml
 kubectl delete -f k8s
