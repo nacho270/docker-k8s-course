@@ -1,17 +1,3 @@
-docker rm -f $(docker ps -aq)
-
-docker build -t nacho270/node-express .
-docker run -p 8080:8080 nacho270/node-express
-
-docker build -f Dockerfile.dev .
-docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app 4e8246f89acc
-
-docker-compose up --build -d
-docker-compose down
-
-
-----------------------------------------------------------------------------------------------------------------
-
 minikube start --driver=hyperkit
 minikube ip
 minikube ssh
@@ -27,6 +13,8 @@ minikube dashboard
 
 kubectl apply -f client-pod.yaml
 kubectl apply -f k8s
+
+kubectl get all 
 
 kubectl get pods
 kubectl get services
@@ -53,3 +41,4 @@ kubectl set image deployment/client-deployment client=nacho270/docker-fibonacci-
 
 kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgres_password
 
+minikube addons enable ingress
