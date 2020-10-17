@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  redis-server:
+    image: redis
+
+  app:
+    restart: always
+    build: .
+    # image: nacho270/node-redis-visits:latest
+    ports:
+      - "8080:8080"
