@@ -1,4 +1,4 @@
-minikube start --driver=hyperkit
+minikube start --driver=hyperkit --memory 4096
 minikube ip
 minikube ssh
 minikube ip
@@ -13,6 +13,9 @@ minikube dashboard
 
 kubectl apply -f client-pod.yaml
 kubectl apply -f k8s
+
+kubectl config get-contexts 
+kubectl config use-context my-cluster-name 
 
 kubectl get all 
 
