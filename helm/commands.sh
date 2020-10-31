@@ -42,3 +42,40 @@ Temaplates
                  APIVersions
                         Minor
                         Major
+
+Functions and pipelines
+-----------------------
+
+- Default: supplies a default value when the required value is not present:
+
+{{ .Values.service.name  | default .Chart.Name }} // if .Values.service.name is not present, it uses .Chart.Name instead
+
+Functions                                    |            Pipeline
+-----------------------------------------------------------------------------------------------------------
+default default_value required_value         |            required_value | default default_value
+quote value                                  |            value | quote
+uppter value                                 |            value | upper
+truc value 63                                |            value | trunc 63
+trimSuffix "-" value                         |            value | trimSuffix "-"
+b64enc value                                 |            value | b64enc
+randAlphaNum 10                              |            value | randAlphaNum 10
+toYaml value                                 |            value | toYaml
+printf format value...                       |            list value .... | join "-"
+
+Examples: 
+{{ .Values.service.name  | trunc 63 | trimSuffix "-" }}
+{{ .Values.mongodbRootPassword  | b64enc | quote }}
+
+
+With
+------------
+
+Example:
+
+spec:
+       {{ - with .Values.service -}}
+       type: {{ .type}}
+       port: {{ .port }}
+       {{ - end }}
+
+       the - removes the trailing or leading whitespaces
